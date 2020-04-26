@@ -1,7 +1,7 @@
 {
   "name": "my-webpack-demo",
   "version": "1.0.0",
-  "description": "",
+  "description": "my webpack project",
   "main": "index.js",
   "scripts": {
     "build": "webpack"
@@ -23,6 +23,7 @@
     "@babel/preset-react": "^7.9.4",
     "babel-loader": "^8.1.0",
     "css-loader": "^3.5.3",
+    "file-loader": "^6.0.0",
     "less": "^3.11.1",
     "less-loader": "^6.0.0",
     "react": "^16.13.1",
