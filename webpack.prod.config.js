@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// const 
 
 module.exports = {
     entry: {
@@ -34,7 +35,15 @@ module.exports = {
                 use: [
                     MiniCssExtractPlugin.loader,
                     'css-loader',
-                    'less-loader'
+                    'less-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: () => {
+                                require('autoprefixer')()
+                            }
+                        }
+                    }
                 ]
             },
             {
