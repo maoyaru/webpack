@@ -1,6 +1,7 @@
 'use strict'
 
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
     entry: {
@@ -35,12 +36,24 @@ module.exports = {
             },
             {
                 test: /\.(png|jpg|gif|svg)$/,
-                use: 'file-loader'
+                use: [{
+                    loader: 'url-loader',
+                    options: {
+                        limit: 10240
+                    }
+                }]
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,
                 use: 'file-loader'
             }
         ]
+    },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin()
+    ],
+    devServer: {
+        contentBase: './dist',
+        hot: true 
     }
 }
