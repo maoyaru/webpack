@@ -4,9 +4,9 @@
   "description": "my webpack project",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --config webpack.prod.config.js",
     "watch": "webpack --watch",
-    "dev": "webpack-dev-server --open"
+    "dev": "webpack-dev-server --config webpack.dev.config.js --open"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,7 @@
     "file-loader": "^6.0.0",
     "less": "^3.11.1",
     "less-loader": "^6.0.0",
+    "mini-css-extract-plugin": "^0.9.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "style-loader": "^1.2.0",

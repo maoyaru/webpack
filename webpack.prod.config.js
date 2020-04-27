@@ -1,7 +1,7 @@
 'use strict'
 
 const path = require('path');
-const webpack = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     entry: {
@@ -10,7 +10,7 @@ module.exports = {
     },
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: '[name].js'
+        filename: '[name]_[chunkhash:8].js'
     },
     mode: 'production',
     module: {
@@ -22,14 +22,14 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    'style-loader',
+                    MiniCssExtractPlugin.loader,
                     'css-loader'
                 ]
             },
             {
                 test: /\.less$/,
                 use: [
-                    'style-loader',
+                    MiniCssExtractPlugin.loader,
                     'css-loader',
                     'less-loader'
                 ]
@@ -37,8 +37,9 @@ module.exports = {
             {
                 test: /\.(png|jpg|gif|svg)$/,
                 use: [{
-                    loader: 'url-loader',
+                    loader: 'file-loader',
                     options: {
+                        name: '[name]_[hash:8].[ext]',
                         limit: 10240
                     }
                 }]
@@ -50,10 +51,8 @@ module.exports = {
         ]
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin()
-    ],
-    devServer: {
-        contentBase: './dist',
-        hot: true 
-    }
+        new MiniCssExtractPlugin({
+            filename: '[name]_[contenthash:8].css'
+        })
+    ]
 }
