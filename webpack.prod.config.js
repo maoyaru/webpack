@@ -14,7 +14,7 @@ module.exports = {
     },
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: '[name]_[chunkhash:8].js'
+        filename: '[name]_[contenthash].js'
     },
     mode: 'production',
     module: {
